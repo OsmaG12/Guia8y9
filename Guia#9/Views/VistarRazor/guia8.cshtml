@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Guia8";
+}
+
+@using (Html.BeginForm("index", "inicio", FormMethod.Post))
+{
+
+    @Html.Label("Nombre de Usuario")
+
+@Html.TextBox("txtUserName", "", new {@class="form-control"})
+<br />
+
+@Html.Label("Contraseña")
+
+@Html.Password("Contrasena", "", new{@class="form-control"})
+<br />
+
+@Html.Label("Direccion:")
+
+@Html.TextArea("Direccion", "Ingrese su direccion", new{@class="form-control", id="idDireccion"})
+<br />
+
+
+@Html.Label("Pasatiempos")
+
+@Html.CheckBox("Bailar")
+@Html.CheckBox("Caminar", true)
+<br />
+
+@Html.Label("Genero:")
+
+@Html.RadioButton("Genero", "Masculino", true, new{id="masculino"})
+
+@Html.RadioButton("Genero", "Femenino", false, new { id = "femenino" })
+
+<br />
+
+    @Html.Label("Cursos:")
+
+    IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+
+@Html.DropDownList("ddlCurso", new SelectList(strList, strList.FirstOrDefault()), "--Seleccionar curso---")
+<br />
+
+@Html.Label("Seleccione:")
+<br />
+@Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{
+      new SelectListItem {Text = "C#", Value = "1"},
+      new SelectListItem {Text = "ASP.Net", Value = "2"},
+      new SelectListItem {Text = "ASP.Net Core", Value = "3"},
+      new SelectListItem {Text = "Azure", Value = "4"}
+})
+
+}
